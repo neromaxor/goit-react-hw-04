@@ -1,7 +1,7 @@
 import toast, { Toaster } from "react-hot-toast";
 import styles from "./SearchBar.module.css";
 
-const SearchBar = ({ onSubmit, searchText, setSearchText }) => {
+const SearchBar = ({ onSubmit }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const form = evt.currentTarget;
@@ -27,8 +27,6 @@ const SearchBar = ({ onSubmit, searchText, setSearchText }) => {
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
           name="query" // Додати атрибут name для забезпечення доступу до form.elements
         />
         <button type="submit">Search</button>
