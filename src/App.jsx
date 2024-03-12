@@ -9,6 +9,8 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
 import ImageModal from "./components/ImageModal/ImageModal";
 
+Modal.setAppElement("#root");
+
 function App() {
   const [photo, setPhoto] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -54,8 +56,10 @@ function App() {
   };
 
   const openModal = (imageData) => {
-    setSelectedImageData(imageData);
-    setModalIsOpen(true); // Встановлюємо modalIsOpen на true при відкритті модального вікна
+    if (!modalIsOpen) {
+      setSelectedImageData(imageData);
+      setModalIsOpen(true); // Встановлюємо modalIsOpen на true при відкритті модального вікна
+    }
   };
 
   const closeModal = () => {
@@ -70,14 +74,14 @@ function App() {
       <SearchBar onSubmit={handleSearch} />
       {loader && <Loader />}
       {errorMessage && <ErrorMessage />}
-      {photo.length > 0 && <ImageGallery items={photo} />}
+      {photo.length > 0 && <ImageGallery items={photo} openModal={openModal} />}
       {photo.length > 0 && !loader && !isLastPage && (
         <LoadMoreButton loadMore={handlClickButton} />
       )}
       {/* Передаємо властивості для модального вікна */}
       {photo.length > 0 && (
         <ImageModal
-          isOpen={openModal} // Використовуємо значення modalIsOpen замість openModal
+          isOpen={modalIsOpen} // Використовуємо значення modalIsOpen замість openModal
           closeModal={closeModal}
           imageData={selectedImageData}
         />

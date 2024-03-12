@@ -18,8 +18,7 @@ const customStyles = {
   },
 };
 
-const ImageModal = ({ openModal, closeModal, imageData }) => {
-  console.log("imageData:", imageData);
+const ImageModal = ({ isOpen, closeModal, imageData }) => {
   if (!imageData) {
     return null;
   }
@@ -28,7 +27,7 @@ const ImageModal = ({ openModal, closeModal, imageData }) => {
 
   return (
     <Modal
-      isOpen={openModal}
+      isOpen={isOpen}
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="Image Modal"

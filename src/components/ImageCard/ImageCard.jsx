@@ -4,7 +4,7 @@ const ImageCard = ({ item }) => {
   const { urls, likes, alt_description } = item;
 
   return (
-    <div>
+    <div className={styles["image-card"]}>
       <img src={urls.small} alt={alt_description} />
       <p className={styles.likes}>Likes: {likes}</p>
     </div>

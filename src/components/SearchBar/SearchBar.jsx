@@ -20,17 +20,27 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
+    <header className={styles["search-header"]}>
+      <form className={styles["search-form"]} onSubmit={handleSubmit}>
         <input
+          className={styles["search-input"]}
           type="text"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
           name="query" // Додати атрибут name для забезпечення доступу до form.elements
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={styles["search-button"]}>
+          Search
+        </button>
       </form>
+      <Toaster
+        position="top-center"
+        containerStyle={{
+          position: "relative",
+          top: 20,
+        }}
+      />
     </header>
   );
 };

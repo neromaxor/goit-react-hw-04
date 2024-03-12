@@ -1,0 +1,13 @@
+.load-more-button {
+  display: flex;
+  justify-content: center;
+}
+
+.load-more-button button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

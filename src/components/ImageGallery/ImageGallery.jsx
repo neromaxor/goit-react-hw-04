@@ -1,17 +1,19 @@
-import ImageCard from "../ImageCard/ImageCard";
 import styles from "./ImageGallery.module.css";
+import ImageCard from "../ImageCard/ImageCard";
 
-const ImageGallery = ({ items }) => {
+const ImageGallery = ({ items, openModal }) => {
   return (
-    <ul>
-      {items.map((item) => (
-        <li key={item.id}>
-          <div>
-            <ImageCard item={item} />
-          </div>
-        </li>
+    <div className={styles["gallery-container"]}>
+      {items.map((item, index) => (
+        <img
+          key={index}
+          src={item.urls.regular}
+          alt={item.alt_description}
+          style={{ width: "200px", height: "200px", margin: "10px" }}
+          onClick={() => openModal(item)}
+        />
       ))}
-    </ul>
+    </div>
   );
 };
 
